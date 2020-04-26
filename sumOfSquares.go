@@ -36,7 +36,7 @@ func sumOfSquares(r2 *bufio.Reader, n2 int) int {
 		squareOfNum2 = num2 * num2
 	}
 
-	return squareOfNum2 + sumOfSquares(r, n-1)
+	return squareOfNum2 + sumOfSquares(r2, n2-1)
 }
 
 
@@ -101,10 +101,16 @@ func solve(r *bufio.Reader, t int) {
 }
 
 func main() {
-	/*r := bufio.NewReader(os.Stdin)
+	file, err := os.Open("file.txt")
+	if err != nil {
+    	log.Fatal(err)
+	}
+	defer file.Close()
+
+	r := bufio.NewReader(file)
 
 	t := scan(r)
-	*/
+	
     i:=0
 	solve(r, t)
 	
