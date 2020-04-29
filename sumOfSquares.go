@@ -5,7 +5,13 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"time"
 )
+
+func timeTrack(start time.Time, name string) {
+	elapsed := time.Since(start)
+	log.Printf("%s took %s", name, elapsed)
+}
 
 // Stores the final result
 var res []int
@@ -94,6 +100,8 @@ func concurrent_solveEachTestCase(r *bufio.Reader) int {
 
 // Solves all test cases
 func solve(r *bufio.Reader, t int) {
+	defer timeTrack(time.Now(), "solve")
+
 	// Base case
 	if t == 0 {
 		return
@@ -108,6 +116,8 @@ func solve(r *bufio.Reader, t int) {
 
 // Solves all test cases
 func concurrent_solve(r2 *bufio.Reader, t2 int) {
+	defer timeTrack(time.Now(), "concurrent_solve")
+
 	// Base case
 	if t2 == 0 {
 		return
